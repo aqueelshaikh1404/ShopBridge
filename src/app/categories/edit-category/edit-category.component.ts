@@ -103,7 +103,7 @@ spinner=false;
   
 }
 
-    onSubmitCategory(){
+    onSubmitCategory(ngForm:NgForm){
       delete this.categoryDetails.key;
 
      if(this.editImg !==undefined){
