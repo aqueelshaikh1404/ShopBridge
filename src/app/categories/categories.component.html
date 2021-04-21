@@ -1,0 +1,96 @@
+<div class="container panel panel-default">
+  <div class="content-heading">
+    <button class="btn btn-warning" style="margin-top: 10px;" (click)="addNewCategory()"><em class="fa fa-plus"></em>&nbsp;&nbsp; Add New
+      Inventory</button>
+
+  </div>
+  <h3 class="panel-heading">Inventory Details</h3>
+  <div class="spinner" [hidden]="spinner">
+        <div class="spinner-grow text-primary" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-secondary" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-success" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-danger" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-warning" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-info" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-light" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-dark" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+  <div class="table-responsive b0 customTable" [hidden]="!spinner">
+    <table class="table">
+           
+      <thead>
+        <tr>
+          <th class="thsearch text-center">
+            Name
+            <form>
+              <input class="form-control searchinput" type="text" name="siteVal" id="siteVal" [(ngModel)]="siteVal"
+                placeholder="Search" #siteName>
+            </form>
+          </th>
+          <th class="thnosearch text-center">
+            Edit
+          </th>
+          <th class="thnosearch text-center">
+            Delete
+          </th>
+          <th class="thnosearch text-center">
+            View
+          </th>
+          <th class="thnoitem"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="text-center" *ngFor="let item of categories | filter:siteVal">
+          <td>{{item.title}}
+          </td>
+          <td>
+            <button class="btn btn-sm btn-primary" type="button" (click)="categoryEdit(item.key)"><em>Edit</em></button>
+
+
+          </td>
+          <td>
+            <button class="btn btn-sm btn-danger" type="button" (click)="categoryDelete(item.key)"> <em>Delete</em>
+            </button>
+
+
+          </td>
+          <td>
+            <button class="btn btn-sm btn-default" type="button" (click)="categoryShow(item.key)"><em
+                class="fa fa-search"></em></button>
+          </td>
+
+
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="5" class="customPagination">
+            <!--     <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator> -->
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <div class="panel-footer">
+    <div class="row">
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+<!-- <div class="content-heading ">
+    Add New Category
+    <small>
+        
+        <a [routerLink]="['categories']"> Categories </a>->
+        Add Category
+    </small>
+</div> -->
+<div class="container-md">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-9">
+            <div class="panel b">
+                <!-- <div class="panel-heading  text-bold bg-purple-dark">Add Inventory</div> -->
+                <div class="panel-body">
+                    <form (ngSubmit)="onSubmitCategory(f)" #f="ngForm">
+                        <div class="form-group">
+                            <label>Title*</label>
+                            <input class="form-control" type="text" required name="title" id="title"
+                                   [(ngModel)]="category.title"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Description*</label>
+                            <textarea class="form-control" rows="3" name="title" id="title"
+                                      [(ngModel)]="category.description" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Price*</label>
+                            <input class="form-control"  type="number" name="title" id="price"
+                                      [(ngModel)]="category.price" required>
+                        </div>
+                        <div class="row form-group">
+                           
+                            <div class="col-md-6" [hidden]="url ==''">
+                                <img class="media-object img-thumbnail thumb96" [src]="url" alt="Image"/>
+                            </div>
+                            <div class="col-md-4">
+                                    <div class=" fileUpload btn btn-primary choose-btn" [hidden]="!uploading">
+                                        <span> <i class="fa fa-upload" aria-hidden="true"></i>&nbsp;&nbsp;Upload</span>
+                                        <!-- <input type="file" class="upload" ng2FileSelect [uploader]="uploader"
+                                               accept="image/*" (change)="readUrl($event)"> -->
+                                               <input type="file" class="upload" #userPhoto (change)="readUrl($event)" name="image" autocomplete="off"  />
+                                    </div>
+                                    <div class="fileUpload btn btn-primary choose-btn " [hidden]="uploading">
+                                            <span>Uploading...</span>
+                                            <!-- <input type="file" class="upload" ng2FileSelect [uploader]="uploader"
+                                                   accept="image/*" (change)="readUrl($event)"> -->
+                                        </div>
+                                </div>
+                        </div>
+                        <button class="btn btn-danger" mat-dialog-close>Cancel</button>
+                        <button class="btn btn-primary pull-right s-n-btn" type="submit">Add Inventory</button>
+                        <p>
+                            <small class="text-muted">* Required Fields</small>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

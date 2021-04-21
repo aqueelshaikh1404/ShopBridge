@@ -1,0 +1,95 @@
+<div class="container-md">
+  <div class="spinner" [hidden]="spinner">
+    <div class="spinner-grow text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+    <div class="spinner-grow text-secondary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+    <div class="spinner-grow text-success" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+    <div class="spinner-grow text-danger" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+    <div class="spinner-grow text-warning" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+    <div class="spinner-grow text-info" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+    <div class="spinner-grow text-light" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+    <div class="spinner-grow text-dark" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+  <div class="row" [hidden]="!spinner">
+    <div class="col-md-2"></div>
+    <div class="col-md-9">
+      <div class="panel b">
+        <h4 class="panel-heading  text-bold bg-purple-dark">Update Inventory</h4>
+        <div class="panel-body">
+          <form (ngSubmit)="onSubmitCategory(f)" #f="ngForm">
+            <div class="form-group">
+              <label>Title*</label>
+              <input class="form-control" type="text" required name="title" id="title"
+                [(ngModel)]="categoryDetails.title" />
+            </div>
+            <div class="form-group">
+              <label>Description*</label>
+              <textarea class="form-control" rows="3" name="description" id="description"
+                [(ngModel)]="categoryDetails.description" required></textarea>
+            </div>
+            <div class="form-group">
+              <label>Price*</label>
+              <input class="form-control" type="number" name="price" id="price" [(ngModel)]="categoryDetails.price"
+                required>
+            </div>
+            <div class="row">
+              <!-- <label>Image</label> -->
+              <!-- <label for="image-input" class="file-upload"> -->
+                
+                <div class="col-md-3" [hidden]="url !=''">
+                  <div class="spinner-grow" role="status" [hidden]="!showLoader">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                  <img class=" img-responsive img-thumbnail" src="{{categoryDetails.image}}" alt="Image"
+                    height="70px" />
+                </div>
+                <div class="col-md-3" [hidden]="url ==''">
+                  <img class=" img-responsive img-thumbnail" [src]="url" alt="Image" height="70px" />
+                </div>
+                <div class="col-md-3">
+                  <div class=" fileUpload btn btn-primary choose-btn" [hidden]="!uploading">
+                    <span> <i class="fa fa-upload" aria-hidden="true"></i>&nbsp;&nbsp;Upload</span>
+                    <!-- <input type="file" class="upload" ng2FileSelect [uploader]="uploader"
+                                                               accept="image/*" (change)="readUrl($event)"> -->
+                    <input type="file" class="upload" #userPhoto (change)="readUrl($event)" name="image"
+                      autocomplete="off" />
+                  </div>
+                  <div class="fileUpload btn btn-primary choose-btn " [hidden]="uploading">
+                    <span>Uploading...</span>
+                    <!-- <input type="file" class="upload" ng2FileSelect [uploader]="uploader"
+                                                                   accept="image/*" (change)="readUrl($event)"> -->
+                  </div>
+                </div>
+
+                <!--   <div class="col-md-6">
+                                   <img class="media-object img-thumbnail thumb96" [src]="url" alt="Image" />
+                                   </div><!--COL -->
+              <!-- </label> -->
+            </div><br>
+            <button class="btn btn-danger pull-right s-n-btn" mat-dialog-close>Cancel</button>
+            <button class="btn btn-primary pull-right s-n-btn" type="submit">Update</button>
+
+            <p>
+              <small class="text-muted">* Required Fields</small>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
